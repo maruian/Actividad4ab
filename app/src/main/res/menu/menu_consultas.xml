@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Estudiantes por ciclo"
+        android:id="@+id/estudiantesPorCiclo"
+        />
+    <item
+        android:title="Estudiantes por curso"
+        android:id="@+id/estudiantesPorCurso" />
+
+    <item
+        android:title="Estudiantes por ciclo y curso"
+        android:id="@+id/estudiantesPorCicloCurso" />
+    <item
+        android:title="Todos los estudiantes"
+        android:id="@+id/estudiantesTodos"
+        />
+    <item
+        android:title="Profesores por ciclo"
+        android:id="@+id/profesoresPorCiclo" />
+    <item
+        android:title="Profesores por curso"
+        android:id="@+id/profesoresPorCurso"
+        />
+    <item
+        android:title="Profesores por ciclo y curso"
+        android:id="@+id/profesoresPorCicloCurso" />
+
+    <item
+        android:title="Todos los profesores"
+        android:id="@+id/profesoresTodos" />
+
+    <item
+        android:title="Todos los profesores y alumnos"
+        android:id="@+id/profosoresAlumnosTodos" />
+</menu>

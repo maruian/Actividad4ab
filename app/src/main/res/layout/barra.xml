@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/alta_alumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alta alumno" />
+
+    <Button
+        android:id="@+id/alta_profesor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alta profesor" />
+
+    <Button
+        android:id="@+id/consultas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultas" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right">
+
+    <Button
+        android:id="@+id/borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="Borrar"/>
+    </LinearLayout>
+
+</LinearLayout>

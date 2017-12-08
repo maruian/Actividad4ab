@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Actividad4ab</string>
+
+    <string-array name="arrayCursos">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="arrayCiclos">
+        <item>DAM</item>
+        <item>DAW</item>
+    </string-array>
+
+</resources>
+
