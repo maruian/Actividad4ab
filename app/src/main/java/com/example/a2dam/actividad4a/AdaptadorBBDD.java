@@ -18,9 +18,11 @@ import java.util.ArrayList;
 public class AdaptadorBBDD {
 
     // Definiciones y constantes
-    private static final String NOMBRE_BASEDATOS = "mibasededatos.db";
+    private static final String NOMBRE_BASEDATOS = "mibasededatos2.db";
     private static final String TABLA_AL = "alumnos";
     private static final String TABLA_PROF = "profesores";
+    private static final String TABLA_ASIG = "asignaturas";
+
     private static final int VERSION_BASEDATOS = 1;
 
     private static final String NOMBRE_AL = "nombre";
@@ -31,6 +33,9 @@ public class AdaptadorBBDD {
 
     private static final String CREAR_TABLA_AL = "CREATE TABLE " + TABLA_AL + " (_id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso text, nota double);";
     private static final String BORRAR_TABLA_AL = "DROP TABLE IF EXISTS " + TABLA_AL + ";";
+
+    private static final String CREAR_TABLA_ASIG = "CREATE TABLE " + TABLA_ASIG + "(_id integer primary key autoincrement, nombre text, horas integer);";
+    private static final String BORRAR_TABLA_ASIG = "DROP TABLE IF EXISTS " + TABLA_ASIG + ";";
 
     private static final String CREAR_TABLA_PROF = "CREATE TABLE " + TABLA_PROF + " (_id integer primary key autoincrement, nombre text, edad integer, ciclo text, curso text, despacho text);";
     private static final String BORRAR_TABLA_PROF = "DROP TABLE IF EXISTS " + TABLA_PROF + ";";
@@ -73,6 +78,13 @@ public class AdaptadorBBDD {
         db.insert(TABLA_PROF,null,valores);
     }
 
+    public void insertarAsignatura(String nombre, int horas){
+        ContentValues valores = new ContentValues();
+        valores.put("nombre", nombre);
+        valores.put("horas", horas);
+        db.insert(TABLA_ASIG, null, valores);
+    }
+
     public ArrayList<Alumno> devuelveTablaAlumnos(){
         ArrayList<Alumno> alumnos = new ArrayList<>();
         Cursor cursor = db.query(TABLA_AL,null,null,null,null,null,null,null);
@@ -100,6 +112,19 @@ public class AdaptadorBBDD {
         }
         cursor.close();
         return profesores;
+    }
+
+    public ArrayList<Asignatura> devuelveTablaAsignaturas(){
+        ArrayList<Asignatura> asignaturas = new ArrayList<>();
+        Cursor cursor = db.query(TABLA_ASIG,null,null,null,null,null,null, null);
+        if (cursor!=null && cursor.moveToFirst()){
+            do{
+                Asignatura asignatura = new Asignatura(cursor.getInt(0),cursor.getString(1),cursor.getInt(2));
+                asignaturas.add(asignatura);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return asignaturas;
     }
 
     public ArrayList<Alumno> devuelveEstudiantesCiclo(String ciclo){
@@ -239,12 +264,14 @@ public class AdaptadorBBDD {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(CREAR_TABLA_AL);
             db.execSQL(CREAR_TABLA_PROF);
+            db.execSQL(CREAR_TABLA_ASIG);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL(BORRAR_TABLA_AL);
             db.execSQL(BORRAR_TABLA_PROF);
+            db.execSQL(BORRAR_TABLA_ASIG);
             onCreate(db);
         }
     }

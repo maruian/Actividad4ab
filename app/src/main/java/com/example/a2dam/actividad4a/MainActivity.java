@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity implements Fragment_barra.On
         EstudiantesPorCurso.OnFragmentInteractionListener, EstudiantesPorCicloCurso.OnFragmentInteractionListener,
         TodosEstudiantes.OnFragmentInteractionListener,ProfesoresPorCiclo.OnFragmentInteractionListener,
         ProfesoresPorCicloCurso.OnFragmentInteractionListener, ProfesoresPorCurso.OnFragmentInteractionListener,
-        TodosProfesores.OnFragmentInteractionListener, TodosProfesoresAlumnos.OnFragmentInteractionListener{
+        TodosProfesores.OnFragmentInteractionListener, TodosProfesoresAlumnos.OnFragmentInteractionListener,
+        AltaAsignatura.OnFragmentInteractionListener, TodasAsignaturas.OnFragmentInteractionListener{
 
     static AdaptadorBBDD adaptadorBBDD;
     FragmentManager fm;

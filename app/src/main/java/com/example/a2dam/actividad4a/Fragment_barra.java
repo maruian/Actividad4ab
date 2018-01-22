@@ -45,7 +45,7 @@ public class Fragment_barra extends Fragment implements View.OnClickListener {
     FragmentTransaction ft;
 
     //Definim botons
-    Button altaAlumne, altaProfesor, borrar, consultas;
+    Button altaAlumne, altaProfesor, altaAsignatura, borrar, consultas;
 
     public Fragment_barra() {
         // Required empty public constructor
@@ -93,6 +93,9 @@ public class Fragment_barra extends Fragment implements View.OnClickListener {
 
         altaProfesor = v.findViewById(R.id.alta_profesor);
         altaProfesor.setOnClickListener(this);
+
+        altaAsignatura = v.findViewById(R.id.alta_asignatura);
+        altaAsignatura.setOnClickListener(this);
 
         consultas = v.findViewById(R.id.consultas);
         registerForContextMenu(consultas);
@@ -263,6 +266,17 @@ public class Fragment_barra extends Fragment implements View.OnClickListener {
                 }
                 ft.commit();
                 return true;
+            case R.id.asignaturasTodas:
+                ft = fm.beginTransaction();
+                if (mListener.estaFragmentDinamic()){
+                    ft.replace(R.id.fragment_dinamic,TodasAsignaturas.newInstance("",""));
+                    ft.addToBackStack(null);
+                } else {
+                    ft.add(R.id.fragment_dinamic,TodasAsignaturas.newInstance("",""));
+                    ft.addToBackStack(null);
+                }
+                ft.commit();
+                return true;
             default: return false;
         }
         // return super.onOptionsItemSelected(item);
@@ -279,6 +293,7 @@ public class Fragment_barra extends Fragment implements View.OnClickListener {
         ft = fm.beginTransaction();
         Fragment aa = AltaAlumno.newInstance("","");
         Fragment ap = AltaProfesor.newInstance("","");
+        Fragment altaAsig = AltaAsignatura.newInstance("","");
         switch (view.getId()){
             case R.id.alta_alumno:
                 if (mListener.estaFragmentDinamic()){
@@ -296,6 +311,17 @@ public class Fragment_barra extends Fragment implements View.OnClickListener {
                     ft.addToBackStack(null);
                 } else {
                     ft.add(R.id.fragment_dinamic, ap);
+                    ft.addToBackStack(null);
+                }
+                ft.commit();
+                break;
+
+            case R.id.alta_asignatura:
+                if (mListener.estaFragmentDinamic()){
+                    ft.replace(R.id.fragment_dinamic, altaAsig);
+                    ft.addToBackStack(null);
+                }else {
+                    ft.add(R.id.fragment_dinamic, altaAsig);
                     ft.addToBackStack(null);
                 }
                 ft.commit();

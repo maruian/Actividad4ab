@@ -33,4 +33,10 @@
     <item
         android:title="Todos los profesores y alumnos"
         android:id="@+id/profosoresAlumnosTodos" />
+
+    <item
+        android:title="Todas las asignaturas"
+        android:id="@+id/asignaturasTodas"
+        />
+
 </menu>
